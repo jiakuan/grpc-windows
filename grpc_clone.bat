@@ -4,9 +4,9 @@ pushd "%~dp0"
 echo #### grpc clone start!
 
 echo #### git clone
-call git clone -b v1.3.x https://github.com/grpc/grpc
+call git clone -b v1.6.x https://github.com/grpc/grpc
 cd grpc
-call git submodule update --init
+call git submodule update --init --recursive
 cd ..
 
 echo #### props edit
