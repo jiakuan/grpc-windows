@@ -58,24 +58,24 @@ robocopy .\x86\Release\ ..\bin\grpc_protoc_plugins\ /XF *.lib *.iobj *.ipdb
 "%devenv%" grpc.sln /build "Debug|Win32" /project grpc++
 "%devenv%" grpc.sln /build "Debug|Win32" /project grpc++_unsecure
 if not %ERRORLEVEL% == 0 goto Finish
-robocopy /mir .\x86\Debug ..\bin\grpc\debug
+robocopy /mir .\Debug ..\bin\grpc\debug
 
 "%devenv%" grpc.sln /build "Release|Win32" /project grpc++
 "%devenv%" grpc.sln /build "Release|Win32" /project grpc++_unsecure
 if not %ERRORLEVEL% == 0 goto Finish
-robocopy /mir .\x86\Release ..\bin\grpc\release /XF *grpc_cpp_plugin*
+robocopy /mir .\Release ..\bin\grpc\release /XF *grpc_cpp_plugin*
 
 "%devenv%" grpc.sln /clean "Debug"
 "%devenv%" grpc.sln /clean "Release"
 "%devenv%" grpc.sln /build "Debug-DLL|Win32" /project grpc++
 "%devenv%" grpc.sln /build "Debug-DLL|Win32" /project grpc++_unsecure
 if not %ERRORLEVEL% == 0 goto Finish
-robocopy /mir .\x86\Debug-DLL ..\bin\grpc\debug_dll
+robocopy /mir .\Debug-DLL ..\bin\grpc\debug_dll
 
 "%devenv%" grpc.sln /build "Release-DLL|Win32" /project grpc++
 "%devenv%" grpc.sln /build "Release-DLL|Win32" /project grpc++_unsecure
 if not %ERRORLEVEL% == 0 goto Finish
-robocopy /mir .\x86\Release-DLL ..\bin\grpc\release_dll /XF *grpc_cpp_plugin*
+robocopy /mir .\Release-DLL ..\bin\grpc\release_dll /XF *grpc_cpp_plugin*
 
 echo #### grpc build done!
 
