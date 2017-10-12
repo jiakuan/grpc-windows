@@ -14,7 +14,11 @@ powershell -executionpolicy bypass -file edit_props.ps1
 
 echo #### nuget packages install
 mkdir grpc\vsprojects\packages & cd grpc\vsprojects\packages
-powershell -executionpolicy bypass -Command Invoke-WebRequest https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile "%cd%\nuget.exe"
+REM The following command works for PowerShell v2+
+powershell -executionpolicy bypass -Command "(New-Object System.Net.WebClient).DownloadFile(\"https://dist.nuget.org/win-x86-commandline/latest/nuget.exe\", \"%cd%\nuget.exe\")"
+REM The following command ONLY works for PowerShell v3+
+REM powershell -executionpolicy bypass -Command Invoke-WebRequest https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -OutFile "%cd%\nuget.exe"
+
 nuget.exe install ..\vcxproj\grpc\packages.config
 
 echo #### grpc clone done!
